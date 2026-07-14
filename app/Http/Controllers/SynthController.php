@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Synth;
 use Illuminate\Http\Request;
 
 class SynthController extends Controller
@@ -28,7 +29,9 @@ class SynthController extends Controller
 
         Synth::create($data);
 
-        return redirect()->route('synths.index');
+        return redirect()
+            ->route('synths.index')
+            ->with('success', 'Synth created.');
     }
 
     public function show(Synth $synth)
@@ -52,12 +55,17 @@ class SynthController extends Controller
 
         $synth->update($data);
 
-        return redirect()->route('synths.index');
+        return redirect()
+            ->route('synths.index')
+            ->with('success', 'Synth updated.');
     }
 
     public function destroy(Synth $synth)
     {
         $synth->delete();
-        return redirect()->route('synths.index');
+
+        return redirect()
+            ->route('synths.index')
+            ->with('success', 'Synth deleted.');
     }
 }

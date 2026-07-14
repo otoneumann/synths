@@ -1,4 +1,8 @@
 <x-app-layout>
+    @if (session('success'))
+        <div style="color:green;">{{ session('success') }}</div>
+    @endif
+
     <h1>Synths</h1>
 
     <a href="{{ route('synths.create') }}">Add Synth</a>
@@ -13,3 +17,5 @@
         @endforeach
     </ul>
 </x-app-layout>
+
+<a href="{{ route('synths.index') }}">Back to list</a>
